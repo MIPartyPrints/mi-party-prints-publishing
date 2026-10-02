@@ -28,5 +28,11 @@
     "state": "blocked_external_dependency",
     "blocker": "Pinterest developer app access and exact board ID",
     "real_publish_enabled": false
+  },
+  "queue": {
+    "status": "approved",
+    "priority": 100,
+    "approved_at": "2026-10-01T00:00:00-04:00",
+    "not_before": null
   }
 }
