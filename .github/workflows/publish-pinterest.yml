@@ -13,7 +13,10 @@ on:
         default: false
         type: boolean
 permissions:
-  contents: read
+  contents: write
+concurrency:
+  group: pinterest-organic-publisher
+  cancel-in-progress: false
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -22,6 +25,8 @@ jobs:
       - name: Validate locked commissioning manifest
         if: ${{ !inputs.execute }}
         run: python publisher/validate_job.py "${{ inputs.job_path }}" --allow-external-asset
+      - name: Check durable duplicate state
+        run: python publisher/durable_state.py check "${{ inputs.job_path }}"
       - name: Real-publish safety gate
         if: ${{ inputs.execute }}
         run: |
