@@ -1,0 +1,31 @@
+name: Pinterest Publisher
+on:
+  workflow_dispatch:
+    inputs:
+      job_path:
+        description: Approved job JSON path
+        required: true
+        type: string
+      execute:
+        description: Execute real Pinterest publish
+        required: true
+        default: false
+        type: boolean
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate approved package
+        run: python publisher/validate_job.py "${{ inputs.job_path }}"
+      - name: Safety gate
+        if: ${{ inputs.execute }}
+        run: |
+          echo "Real execution remains disabled until Pinterest app access, OAuth, exact board ID, and media handoff are configured."
+          exit 1
+      - name: Dry-run publisher
+        if: ${{ !inputs.execute }}
+        run: |
+          echo "Validation passed. Pinterest execution intentionally disabled while API access is pending."
