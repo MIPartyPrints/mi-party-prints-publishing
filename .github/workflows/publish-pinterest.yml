@@ -5,6 +5,7 @@ on:
       job_path:
         description: Approved job JSON path
         required: true
+        default: jobs/DFC-PIN-001-v3.json
         type: string
       execute:
         description: Execute real Pinterest publish
@@ -18,14 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate approved package
-        run: python publisher/validate_job.py "${{ inputs.job_path }}"
-      - name: Safety gate
+      - name: Validate locked commissioning manifest
+        if: ${{ !inputs.execute }}
+        run: python publisher/validate_job.py "${{ inputs.job_path }}" --allow-external-asset
+      - name: Real-publish safety gate
         if: ${{ inputs.execute }}
         run: |
-          echo "Real execution remains disabled until Pinterest app access, OAuth, exact board ID, and media handoff are configured."
+          echo "Real execution remains disabled until Pinterest app access, OAuth, exact board ID, and exact asset-byte handoff are commissioned."
           exit 1
-      - name: Dry-run publisher
+      - name: Dry-run result
         if: ${{ !inputs.execute }}
-        run: |
-          echo "Validation passed. Pinterest execution intentionally disabled while API access is pending."
+        run: echo "Locked approved manifest validated. No Pinterest call made."
