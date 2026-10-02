@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "entity_types": [
+    "theme",
+    "product"
+  ],
+  "principles": {
+    "transparent_inputs": true,
+    "no_single_composite_hides_inputs": true,
+    "exploration_is_mandatory": true,
+    "new_products_have_protected_capacity": true,
+    "cold_start_neutrality": "Missing performance history is not negative evidence."
+  },
+  "theme_signals": [
+    "etsy_orders",
+    "etsy_revenue_usd",
+    "etsy_visits",
+    "conversion_rate",
+    "pinterest_impressions",
+    "pinterest_saves",
+    "pinterest_outbound_clicks",
+    "catalog_coverage",
+    "production_effort",
+    "market_signal"
+  ],
+  "product_signals": [
+    "product_type",
+    "theme",
+    "launch_date",
+    "maturity",
+    "etsy_orders",
+    "etsy_revenue_usd",
+    "etsy_visits",
+    "pinterest_impressions",
+    "pinterest_outbound_clicks",
+    "production_effort",
+    "strategic_fit"
+  ],
+  "maturity_states": [
+    "new",
+    "learning",
+    "established"
+  ]
+}
