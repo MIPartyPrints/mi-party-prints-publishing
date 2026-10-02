@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "owner_direction_2026-10-02",
+  "purpose": "Prevent successful themes from monopolizing production and marketing while preserving evidence-based exploitation.",
+  "allocation": {
+    "established_proven_max_share": 0.6,
+    "exploration_min_share": 0.4,
+    "exploration_buckets": {
+      "new_themes": 0.2,
+      "new_products_within_any_theme": 0.15,
+      "experimental_concepts_or_retests": 0.05
+    }
+  },
+  "cold_start": {
+    "minimum_evaluation_window_days": 30,
+    "minimum_organic_posts_before_performance_demotion": 3,
+    "rule": "Do not demote a new theme or product solely because it lacks historical performance."
+  },
+  "diversity": {
+    "max_consecutive_same_theme": 2,
+    "require_product_type_rotation": true,
+    "rule": "A high-performing theme may earn more capacity but cannot consume protected exploration capacity."
+  },
+  "notes": "Allocation is a starting policy for agency planning, not a paid-spend authorization. Adjust from evidence and owner direction."
+}
