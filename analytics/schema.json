@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "metric_windows_days": [
+    1,
+    7,
+    30
+  ],
+  "dimensions": [
+    "theme",
+    "product_type",
+    "marketing_job",
+    "creative_concept",
+    "platform",
+    "board",
+    "publish_slot"
+  ],
+  "metrics": [
+    "impressions",
+    "saves",
+    "pin_clicks",
+    "outbound_clicks",
+    "video_views",
+    "etsy_orders",
+    "etsy_revenue_usd"
+  ],
+  "derived": [
+    "save_rate",
+    "pin_click_rate",
+    "outbound_click_rate",
+    "revenue_per_1000_impressions"
+  ],
+  "attribution": {
+    "status": "future_optional",
+    "rule": "Do not infer Etsy order attribution without supported source data."
+  }
+}
