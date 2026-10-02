@@ -1,0 +1,40 @@
+name: Pinterest Organic Scheduler
+
+on:
+  schedule:
+    # GitHub cron is UTC. Run hourly during the broad Michigan posting window;
+    # scheduler logic decides whether a configured local slot is actually due.
+    - cron: "5 13-23 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Commissioning dry run only
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pinterest-organic-publisher
+  cancel-in-progress: false
+
+jobs:
+  select:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Select due slot and eligible approved job
+        id: select
+        run: |
+          python publisher/auto_scheduler.py             --config config/schedule.json             --jobs-dir jobs             --state state/publishing-state.json             --output selected-job.json
+      - name: Show commissioning decision
+        run: cat selected-job.json
+      - name: Production execution safety gate
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          echo "Automatic Pinterest API execution remains disabled until Pinterest OAuth commissioning is complete."
+          echo "The scheduler may select work, but it will not publish during the current commissioning phase."
