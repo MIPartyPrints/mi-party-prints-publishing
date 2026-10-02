@@ -1,0 +1,16 @@
+name: Publishing Agency Health
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 12 * * *"
+permissions:
+  contents: read
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit queue and durable state
+        run: python publisher/audit.py
+      - name: Detect unresolved publishing locks
+        run: python publisher/reconcile.py
