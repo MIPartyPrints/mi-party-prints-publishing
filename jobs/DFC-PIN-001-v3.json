@@ -1,0 +1,32 @@
+{
+  "job_id": "DFC-PIN-001",
+  "version": "DFC-PIN-001-v3",
+  "platform": "pinterest",
+  "paid": false,
+  "approval": {
+    "decision": "Approved",
+    "exact_version": "DFC-PIN-001-v3",
+    "approved_by": "owner",
+    "approval_record_id": "3e914f91-e9c0-81dc-ae6a-dce457b17613"
+  },
+  "asset": {
+    "drive_file_id": "1lj_y1syMh-w4JOaNo__4esVYNV0ujEhC",
+    "drive_url": "https://drive.google.com/file/d/1lj_y1syMh-w4JOaNo__4esVYNV0ujEhC/view?usp=drivesdk",
+    "drive_parent_state": "Approved for Publishing",
+    "expected_bytes": 2549881,
+    "sha256": "11b762d94ea8fabdf8561073cbe373b42e0b3fb3039f5c5b12fb4e9d75d1253a"
+  },
+  "pin": {
+    "board_name": "Kids Birthday Party Games & Activities",
+    "board_id": "PENDING_PINTEREST_API_RESOLUTION",
+    "title": "Dinosaur Fossil Hunter Coloring Pages | Printable Kids Activity",
+    "description": "Make coloring time a prehistoric adventure with 13 printable Dinosaur Fossil Hunter coloring pages. A fun screen-free activity for dinosaur birthday parties, quiet-time stations, or creative play at home. Print your pages and let young explorers bring the fossil-hunting adventure to life.",
+    "alt_text": "Child explorer searching among backyard ferns, rocks and dinosaur toys above three black-and-white Dinosaur Fossil Hunter coloring pages, with a Fossil Hunter Coloring Adventure headline.",
+    "link": "https://mipartyprints.etsy.com/listing/4562145310"
+  },
+  "commissioning": {
+    "state": "blocked_external_dependency",
+    "blocker": "Pinterest developer app access and exact board ID",
+    "real_publish_enabled": false
+  }
+}
