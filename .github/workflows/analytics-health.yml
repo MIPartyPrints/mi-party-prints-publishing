@@ -1,0 +1,21 @@
+name: Analytics Health
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "45 12 * * *"
+permissions:
+  contents: read
+jobs:
+  analytics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate analytics JSON
+        run: |
+          python -m json.tool analytics/schema.json >/dev/null
+          python -m json.tool analytics/performance.json >/dev/null
+          python -m json.tool analytics/learning.json >/dev/null
+      - name: Calculate descriptive metrics
+        run: python analytics/score.py
+      - name: Build learning observations
+        run: python analytics/learn.py
