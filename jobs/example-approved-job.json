@@ -1,0 +1,23 @@
+{
+  "job_id": "EXAMPLE-PIN-001",
+  "version": "EXAMPLE-PIN-001-v1",
+  "platform": "pinterest",
+  "paid": false,
+  "approval": {
+    "decision": "Approved",
+    "exact_version": "EXAMPLE-PIN-001-v1",
+    "approved_by": "owner",
+    "approved_at": "2026-10-01T00:00:00-04:00"
+  },
+  "asset": {
+    "path": "approved-assets/EXAMPLE-PIN-001-v1.png",
+    "sha256": "REPLACE_WITH_EXACT_SHA256"
+  },
+  "pin": {
+    "board_id": "REPLACE_WITH_PINTEREST_BOARD_ID",
+    "title": "Approved Pin title",
+    "description": "Approved Pin description",
+    "alt_text": "Approved image description",
+    "link": "https://example.com/"
+  }
+}
