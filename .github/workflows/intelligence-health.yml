@@ -1,0 +1,19 @@
+name: Theme Product Intelligence Health
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 13 * * 1"
+permissions:
+  contents: read
+jobs:
+  intelligence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate intelligence configuration
+        run: |
+          python -m json.tool intelligence/schema.json >/dev/null
+          python -m json.tool intelligence/opportunities.json >/dev/null
+          python -m json.tool config/exploration-policy.json >/dev/null
+      - name: Build opportunity lanes
+        run: python intelligence/rank.py
